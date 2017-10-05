@@ -619,10 +619,8 @@
         
         //
         // Click Handling
-        console.log(context.player.options.handleClick);
         
         if(context.player.options.handleClick) {
-            console.log($(context._canvasElement));
             $(context._canvasElement).on('mousedown', function(e) {
                 if(e.which != 1) {
                     return;
