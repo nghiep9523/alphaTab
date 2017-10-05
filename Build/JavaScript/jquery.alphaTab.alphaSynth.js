@@ -80,7 +80,7 @@
         var as = element.data('alphaSynth');
         if(!as) {
             
-            var defaults = $.extend({}, playerOptionsDefaults);                  
+            var defaults = $.extend({}, playerOptionsDefaults);          
             context.player = {
                 options: $.extend(defaults, options),
                 elements: {},
@@ -544,7 +544,7 @@
         context.TriggerEvent('playedBeatChanged', beat);
     };
     
-    api.cursorOptions = api.playerOptions
+    api.cursorOptions = api.playerOptions;
     
     api.playerCursor = function(element, context, options) {
         var as = element.data('alphaSynth');
@@ -619,9 +619,11 @@
         
         //
         // Click Handling
+        console.log(context.player.options.handleClick);
         
         if(context.player.options.handleClick) {
-            $(context.CanvasElement).on('mousedown', function(e) {
+            console.log($(context._canvasElement));
+            $(context._canvasElement).on('mousedown', function(e) {
                 if(e.which != 1) {
                     return;
                 }
@@ -639,7 +641,7 @@
                     selecting = true;
                 }
             });
-            $(context.CanvasElement).on('mousemove', function(e) {
+            $(context._canvasElement).on('mousemove', function(e) {
                 if(selecting) {
                     var parentOffset = $(this).offset();
                     var relX = e.pageX - parentOffset.left;
@@ -654,7 +656,7 @@
                     }
                 }
             });
-            $(context.CanvasElement).on('mouseup', function(e) {
+            $(context._canvasElement).on('mouseup', function(e) {
                 e.preventDefault();
                                             
                 var selectionStart = context.selectionStart;
